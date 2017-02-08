@@ -68,3 +68,16 @@ build_script:
     - del c:\libiio-win64\matlab\CMakeLists.txt
     - 7z a "c:\libiio-win64.zip" c:\libiio-win64
     - appveyor PushArtifact c:\libiio-win64.zip
+
+deploy:
+    - provider: GitHub
+      artifact: c:\libiio-setup.exe, c:\libiio-win32.zip, c:\libiio-win64.zip
+      draft: false
+      prerelease: false
+      description: ''
+      auth_token:
+        secure: Pb/1c3BtRb+ZnGVIXerQ1wQqBIJfJgclsvng7uThBAqADiGkvJ8nnjFrGT6UOUFJ
+      force_update: true
+      on:
+         branch: master                 # on master only
+         appveyor_repo_tag: true        # on tag push only 
