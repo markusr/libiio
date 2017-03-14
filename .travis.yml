@@ -68,7 +68,7 @@ before_install:
 
   - mkdir -p $TRAVIS_BUILD_DIR/build
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir -p $TRAVIS_BUILD_DIR/build_tar ; fi
-
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then openssl aes-256-cbc -K $encrypted_2df4345fb1bb_key -iv $encrypted_2df4345fb1bb_iv -in ${TRAVIS_BUILD_DIR}/CI/travis/certificate.p12.enc -out /tmp/certificate.p12 -d; fi
 script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ${TRAVIS_BUILD_DIR}/CI/travis/make_linux; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ${TRAVIS_BUILD_DIR}/CI/travis/make_darwin; fi

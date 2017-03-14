@@ -6,6 +6,20 @@ cd $TRAVIS_BUILD_DIR/build
 cmake -DOSX_PACKAGE=ON ..
 make
 ls
+PKG=$(ls | grep -e "pkg$")
+
+# https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/security.1.html
+# https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/productsign.1.html
+KEYCHAIN=build.keychain
+security create-keychain -p temp_password ${KEYCHAIN}
+security default-keychain -s ${KEYCHAIN}
+security unlock-keychain -p temp_password ${KEYCHAIN}
+security import /tmp/certificate.p12 -k ${KEYCHAIN} -P temp_password -T /usr/bin/productsign
+security find-identity -v
+productsign --keychain $KEYCHAIN --sign $PKG $PKG_signed
+rm ${PKG}
+mv ${PKG}_signed ${PKG}
+rm ${KEYCHAIN}
 
 cd $TRAVIS_BUILD_DIR/build_tar
 cmake -DOSX_PACKAGE=OFF -DENABLE_PACKAGING=ON ..
