@@ -14,7 +14,7 @@ KEYCHAIN=build.keychain
 security -v create-keychain -p temp_password ${KEYCHAIN}
 security -v default-keychain -s ${KEYCHAIN}
 security -v unlock-keychain -p temp_password ${KEYCHAIN}
-ecurity find-identity -v ${KEYCHAIN}
+security find-identity -v ${KEYCHAIN}
 security -v import /tmp/certificate.p12 -k ${KEYCHAIN} -P '' -T /usr/bin/productsign
 productsign --keychain $KEYCHAIN --sign $PKG $PKG_signed
 rm ${PKG}
