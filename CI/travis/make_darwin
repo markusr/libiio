@@ -16,11 +16,11 @@ security -v default-keychain -s ${KEYCHAIN}
 security -v unlock-keychain -p temp_password ${KEYCHAIN}
 security -v import /tmp/certificate.p12 -k ${KEYCHAIN} -P '' -T /usr/bin/productsign
 security find-identity -v ${KEYCHAIN}
+security find-identity -p codesigning -v ${KEYCHAIN}
 
-productsign --keychain $KEYCHAIN --sign $PKG $PKG_signed
+productsign --keychain $KEYCHAIN --sign 65C15CDF09900263582867E9EAC9C8E9DDC080C6 ${PKG} ${PKG}_signed
 rm ${PKG}
 mv ${PKG}_signed ${PKG}
-rm ${KEYCHAIN}
 
 cd $TRAVIS_BUILD_DIR/build_tar
 cmake -DOSX_PACKAGE=OFF -DENABLE_PACKAGING=ON ..
