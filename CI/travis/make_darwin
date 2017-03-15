@@ -18,7 +18,7 @@ security -v import /tmp/certificate.p12 -k ${KEYCHAIN} -P '' -T /usr/bin/product
 security find-identity -v ${KEYCHAIN}
 security find-identity -p codesigning -v ${KEYCHAIN}
 
-productsign --keychain $KEYCHAIN --sign 65C15CDF09900263582867E9EAC9C8E9DDC080C6 ${PKG} ${PKG}_signed
+productsign --keychain $KEYCHAIN --sign JM896W6QTU ${PKG} ${PKG}_signed
 rm ${PKG}
 mv ${PKG}_signed ${PKG}
 
