@@ -34,13 +34,13 @@ namespace iio
         {
             private IntPtr chn;
 
-            [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+            [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
             private static extern int iio_channel_attr_read(IntPtr chn, [In()] string name, [Out()] StringBuilder val, uint len);
 
-            [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+            [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
             private static extern int iio_channel_attr_write(IntPtr chn, [In()] string name, string val);
 
-            [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+            [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
             private static extern IntPtr iio_channel_attr_get_filename(IntPtr chn, [In()] string attr);
 
             public ChannelAttr(IntPtr chn, string name) : base(name, Marshal.PtrToStringAnsi(iio_channel_attr_get_filename(chn, name)))
@@ -69,49 +69,49 @@ namespace iio
         private IntPtr chn;
         private uint sample_size;
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr iio_channel_get_id(IntPtr chn);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr iio_channel_get_name(IntPtr chn);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern uint iio_channel_get_attrs_count(IntPtr chn);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr iio_channel_get_attr(IntPtr chn, uint index);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.I1)]
         private static extern bool iio_channel_is_output(IntPtr chn);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.I1)]
         private static extern bool iio_channel_is_scan_element(IntPtr chn);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern void iio_channel_enable(IntPtr chn);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern void iio_channel_disable(IntPtr chn);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.I1)]
         private static extern bool iio_channel_is_enabled(IntPtr chn);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern uint iio_channel_read_raw(IntPtr chn, IntPtr buf, IntPtr dst, uint len);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern uint iio_channel_write_raw(IntPtr chn, IntPtr buf, IntPtr src, uint len);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern uint iio_channel_read(IntPtr chn, IntPtr buf, IntPtr dst, uint len);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern uint iio_channel_write(IntPtr chn, IntPtr buf, IntPtr src, uint len);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr iio_channel_get_data_format(IntPtr chn);
 
         /// <summary>The name of this channel.</summary>

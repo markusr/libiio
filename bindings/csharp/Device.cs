@@ -33,10 +33,10 @@ namespace iio
         {
             private IntPtr dev;
 
-            [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+            [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
             private static extern int iio_device_attr_read(IntPtr dev, [In()] string name, [Out()] StringBuilder val, uint len);
 
-            [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+            [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
             private static extern int iio_device_attr_write(IntPtr dev, [In()] string name, [In()] string val);
 
             public DeviceAttr(IntPtr dev, string name) : base(name)
@@ -65,10 +65,10 @@ namespace iio
         {
             private IntPtr dev;
 
-            [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+            [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
             private static extern int iio_device_debug_attr_read(IntPtr dev, [In()] string name, [Out()] StringBuilder val, uint len);
 
-            [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+            [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
             private static extern int iio_device_debug_attr_write(IntPtr dev, [In()] string name, [In()] string val);
 
             public DeviceDebugAttr(IntPtr dev, string name) : base(name)
@@ -95,43 +95,43 @@ namespace iio
 
         private Context ctx;
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr iio_device_get_id(IntPtr dev);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr iio_device_get_name(IntPtr dev);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern uint iio_device_get_channels_count(IntPtr dev);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr iio_device_get_channel(IntPtr dev, uint index);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern uint iio_device_get_attrs_count(IntPtr dev);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern uint iio_device_get_debug_attrs_count(IntPtr dev);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr iio_device_get_attr(IntPtr dev, uint index);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr iio_device_get_debug_attr(IntPtr dev, uint index);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern int iio_device_get_trigger(IntPtr dev, IntPtr triggerptr);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern int iio_device_set_trigger(IntPtr dev, IntPtr trigger);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern int iio_device_get_sample_size(IntPtr dev);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern int iio_device_reg_write(IntPtr dev, uint addr, uint value);
 
-        [DllImport("libiio.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         private static extern int iio_device_reg_read(IntPtr dev, uint addr, ref uint value);
 
         internal IntPtr dev;
